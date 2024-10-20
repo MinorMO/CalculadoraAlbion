@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Aplicación</title>
+    <!-- Incluye Bootstrap CSS -->
+     <!-- Bootstrap 5 CSS -->
+     <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="site.css">
+</head>
+
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Mi Aplicación</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Características</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Precios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <div class="container mt-3">
+            <!-- Formulario que envía los datos al controlador -->
+            <form asp-action="Calcular" method="post" id="calculoForm">
+                <!-- Dropdown Foco/Sin foco -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="focoGeneral">Foco</label>
+                        <select id="focoGeneral" name="focoGeneral" class="form-control custom-dropdown">
+                            <option value="36.7">Sin Foco (36.7%)</option>
+                            <option value="54.3">Con Foco (53.9%)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Checkboxes -->
+                <div id="checkboxesContainer" class="mt-4">
+                    <div class="row">
+                        <!-- Checkboxes dinámicos -->
+                        <div class="col-auto checkbox-wrapper-47">
+                            <input type="checkbox" id="T2" name="checkedItems" value="T2" class="dynamic-checkbox" />
+                            <label for="T2">T2</label>
+                        </div>
+                        <div class="col-auto checkbox-wrapper-47">
+                            <input type="checkbox" id="T3" name="checkedItems" value="T3" class="dynamic-checkbox" />
+                            <label for="T3">T3</label>
+                        </div>
+                        <div class="col-auto checkbox-wrapper-47">
+                            <input type="checkbox" id="T4" name="checkedItems" value="T4" class="dynamic-checkbox" />
+                            <label for="T4">T4</label>
+                        </div>
+                        <div class="col-auto checkbox-wrapper-47">
+                            <input type="checkbox" id="T5" name="checkedItems" value="T5" class="dynamic-checkbox" />
+                            <label for="T5">T5</label>
+                        </div>
+                        <div class="col-auto checkbox-wrapper-47">
+                            <input type="checkbox" id="T6" name="checkedItems" value="T6" class="dynamic-checkbox" />
+                            <label for="T6">T6</label>
+                        </div>
+                        <div class="col-auto checkbox-wrapper-47">
+                            <input type="checkbox" id="T7" name="checkedItems" value="T7" class="dynamic-checkbox" />
+                            <label for="T7">T7</label>
+                        </div>
+                        <div class="col-auto checkbox-wrapper-47">
+                            <input type="checkbox" id="T8" name="checkedItems" value="T8" class="dynamic-checkbox" />
+                            <label for="T8">T8</label>
+                        </div>
+                    </div>
+
+                    <!-- Contenedor donde se añadirán los inputs -->
+                    <div class="container mt-3">
+                        <div class="row" id="inputsContainer"></div>
+                    </div>
+                </div>
+
+                <!-- Botones de envío y limpiar -->
+                <button type="button" class="btn btn-primary mt-3" id="submitButton">Enviar</button>
+                <button type="button" class="btn btn-secondary mt-3" id="clearButton">Limpiar</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Mi Aplicación. Todos los derechos reservados.</p>
+    </footer>
+    <script src="lib/jquery.min.js"></script>
+    <!-- Importar Bootstrap JS -->
+    <script src="lib/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

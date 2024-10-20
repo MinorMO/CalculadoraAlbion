@@ -140,11 +140,11 @@ $(document).ready(function () {
   while (pielesT4Restantes >= consumo1) {
     // Realizar un crafteo de cuero T4
     cuerosT4Fabricados++;
-    pielesT4Restantes -= 2;
+    pielesT4Restantes -= consumo1;
     cueroT3Usado++;
 
     // Aplicar el retorno de materiales
-    pielesT4Restantes += 2 * tasaRetorno;
+    pielesT4Restantes += consumo1 * tasaRetorno;
     cueroT3Usado -= tasaRetorno;
   }
 

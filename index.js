@@ -111,8 +111,8 @@ $(document).ready(function () {
 
               // Calcular refinado
               const resultado = calcularRefinado(focoGeneral, materia, consumo1, consumo2);
-              refinadoAnterior[item] = resultado.cueroT3Usado;
-              totalRefinado[item] = resultado.cuerosT4Fabricados;
+              refinadoAnterior[item] = resultado.MaterialAnteriorNecesario;
+              totalRefinado[item] = resultado.totalRefinado;
           }
       });
 
@@ -121,37 +121,31 @@ $(document).ready(function () {
 
   // Función para calcular refinado
   function calcularRefinado(focoGeneral, materia, consumo1, consumo2) {
-    //   let restanteMaterial = materia;
-    //   let produccion = 0.0;
+    let restanteMaterial = materia;
+       let produccion = 0.0;
+       let MaterialAnteriorNecesario = 0.0;
 
-    //   while (restanteMaterial > consumo1) {
-    //       produccion += restanteMaterial / consumo1;
-    //       restanteMaterial = restanteMaterial * focoGeneral;
-    //   }
+       /*while (restanteMaterial > consumo1) {
+           produccion += restanteMaterial / consumo1;
+           restanteMaterial = restanteMaterial * focoGeneral;
+      }*/
 
-    //   const refinadoAnterior = ((58/100) * materia).toFixed(1);
+         while (restanteMaterial >= consumo1) {
+     // Realizar un crafteo de cuero T4
+            produccion++;
+            restanteMaterial -= consumo1;
+
+     // Aplicar el retorno de materiales
+     restanteMaterial += consumo1 * focoGeneral;
+         }
+
+
+
+       const focoInverso = focoGeneral *100;
       
-    //   const totalRefinado = produccion.toFixed(1);
-    let cuerosT4Fabricados = 0;
-  let cueroT3Usado = 0;
-  let pielesT4Restantes = materia;
- let tasaRetorno = focoGeneral;
-  // Mientras haya suficientes pieles T4 para craftear
-  while (pielesT4Restantes >= consumo1) {
-    // Realizar un crafteo de cuero T4
-    cuerosT4Fabricados++;
-    pielesT4Restantes -= consumo1;
-    cueroT3Usado++;
-
-    // Aplicar el retorno de materiales
-    pielesT4Restantes += consumo1 * tasaRetorno;
-    cueroT3Usado -= tasaRetorno;
-  }
-
-  // Redondear el cuero T3 usado al valor entero más cercano
-cueroT3Usado = Math.ceil(cueroT3Usado);
-
-      return { cueroT3Usado, cuerosT4Fabricados };
+       const totalRefinado = produccion.toFixed(1);
+       MaterialAnteriorNecesario = ((produccion * (100-focoInverso))/100).toFixed(1);
+      return { MaterialAnteriorNecesario, totalRefinado };
   }
 
   // Limpiar todos los checkboxes e inputs
